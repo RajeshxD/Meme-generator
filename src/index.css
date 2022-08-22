@@ -1,10 +1,73 @@
-* {
-  box-sizing: border-box;
+/* ---------------------- */
+/* Custom properties      */
+/* ---------------------- */
+
+:root {
+  --clr-accent-dark: #672280;
+  --clr-accent-light: #a626d3;
+
+  --ff-main: "Karla", sans-serif;
 }
 
-body {
-  font-family: "Karla", sans-serif;
+@media (prefers-color-scheme: light) {
+  :root {
+    --clr-primary: #fff;
+    --clr-secondary: #1d1d1c;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --clr-primary: #000;
+    --clr-secondary: #d5d4d8;
+  }
+}
+
+/* ---------------------- */
+/* Reset                  */
+/* ---------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------------------- */
+/* Typography             */
+/* ---------------------- */
+
+html {
+  font-family: var(--ff-main);
+  background-color: var(--clr-primary);
+}
+
+/* ---------------------- */
+/* Components             */
+/* ---------------------- */
+
+/* APP */
+
+/* to push footer to the bottom of page when content is shorter than viewheight port */
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
 }
 main {
   padding: 36px;
@@ -50,6 +113,60 @@ main {
   border: none;
   cursor: pointer;
 }
+.meme {
+  position: relative;
+}
 .meme--image{
   max-width: 100%;
+  border-width: 3px;
+}
+.meme--text {
+  position: absolute;
+  width: 80%;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 15px 0;
+  padding: 0 5px;
+  font-family: impact, sans-serif;
+  font-size: 2em;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        0 2px 0 #000,
+        2px 0 0 #000,
+        0 -2px 0 #000,
+        -2px 0 0 #000,
+        2px 2px 5px #000;
+}
+.bottom {
+  bottom: 0;
+}
+.top {
+  top: 0;
+}
+.footer {
+  padding: 1.25em 2.25em;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    var(--clr-accent-dark) 1.18%,
+    var(--clr-accent-light) 100%
+  );
+  color: var(--clr-primary);
+}
+
+.footer--link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer--link:hover {
+  text-decoration: underline;
+  color: inherit;
 }
